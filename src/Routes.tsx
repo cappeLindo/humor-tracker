@@ -1,6 +1,6 @@
 import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
-
+import { theme } from "./shared/themes/Themes";
 import { HomePage } from "./screens/Home";
 import { DetailPage } from "./screens/Detail";
 import { SetUserNamePage } from "./screens/SetUserName";
@@ -20,8 +20,14 @@ export function AppRoutes() {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="home"
-                screenOptions={{ headerShown: false }}
+                screenOptions={{
+                    headerShown: false,
+                    contentStyle: {
+                        backgroundColor: theme.colors.background
+                    }
+                }}
                 screenLayout={({ children }) => <SafeAreaView>{children}</SafeAreaView>}
+
             >
                 <Stack.Screen name="home" component={HomePage}/>
                     <Stack.Group

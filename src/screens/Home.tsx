@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, Text } from 'react-native';
 
 import { TNavigationScreenProps } from '../Routes';
+import { Header } from '@/shared/components/Header';
 
 
 export const HomePage = () => {
@@ -9,6 +10,9 @@ export const HomePage = () => {
 
 
   return <>
+    <Header 
+      name='Vitor'
+    />
     <Text style={{fontFamily: 'extraBold'}}>Home</Text>
 
     <Button
