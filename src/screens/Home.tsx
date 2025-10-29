@@ -1,8 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import { Button, Text } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { GeralInput } from '../shared/components/Input';
+import { Header } from '../shared/components/Header';
+import { Footer } from '../shared/components/Footer';
 import { TNavigationScreenProps } from '../Routes';
-import { Header } from '@/shared/components/Header';
+import { theme } from '../shared/themes/Themes';
 
 
 export const HomePage = () => {
@@ -10,19 +13,46 @@ export const HomePage = () => {
 
 
   return <>
-    <Header 
-      name='Vitor'
-    />
-    <Text style={{fontFamily: 'extraBold'}}>Home</Text>
-
-    <Button
-      title='Go to Details'
-      onPress={() => navigation.navigate('detail', { rate: 3 })}
+    <Header
+      name={'Vitor'}
     />
 
-    <Button
-      title='Go to Set User Name'
-      onPress={() => navigation.navigate('setUserName')}
-    />
+    <View style={{ flex: 1 }} />
+
+    <Footer>
+      <View style={styles.footerContainer}>
+        <Text style={styles.footerTitle}>
+          Qual é o seu nome?
+        </Text>
+
+        <GeralInput label='Nome' asButton onPress={() => navigation.navigate('setUserName')}>
+          <TextInput
+            editable={false}
+            pointerEvents='none'
+            style={styles.footerInput}
+            placeholder='Escreva seu nome aqui...'
+            placeholderTextColor={theme.colors.textPlaceholder}
+          />
+        </GeralInput>
+      </View>
+    </Footer>
   </>;
 }
+
+const styles = StyleSheet.create({
+  footerContainer: {
+    gap: 8
+  },
+  footerTitle: {
+    textAlign: 'center',
+    color: theme.colors.text,
+    fontSize: theme.fonts.sizes.body,
+    fontFamily: theme.fonts.family.regular,
+  },
+  footerInput: {
+    padding: 12,
+    color: theme.colors.text,
+    fontSize: theme.fonts.sizes.body,
+    fontFamily: theme.fonts.family.regular,
+  }
+});

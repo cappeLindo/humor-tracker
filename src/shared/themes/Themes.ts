@@ -24,6 +24,12 @@ export const theme = {
         }
     },
     shadows: { 
-        default: '0 0 4 0 rgba(0, 0, 0, 0.25)'
+        default: {
+            shadowColor: '#000',
+            shadowOffSet: { width: 0, heigth: 0 },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 10,
+        }
     }
 };
